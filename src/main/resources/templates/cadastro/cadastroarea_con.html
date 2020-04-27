@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<head>
+<title>Projeto Integrador II</title>
+<div th:replace="fragments/header :: header-css"></div>
+<div th:replace="fragments/header :: header-js"></div>
+</head>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<div th:replace="fragments/header :: header"></div>
+		<div th:replace="fragments/sidebar :: sidebar"></div>
+		<div class="content-wrapper">
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h2>Cadastro de Area do Conhecimento</h2>
+							<h6>Gerenciamento Administrativo</h6>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+								<li class="breadcrumb-item active">Area de Conhecimento</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<form action="salvararea_con" id="formarea_con" method="post"
+							th:object="${area_conobj}" class="col-md-12">
+							<!-- post igual como foi mapeado -->
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label for="id">ID</label> <input type="text" name="id"
+										th:field="*{id}" class="form-control" id="id"
+										readonly="readonly">
+								</div>
+								<div class="form-group col-md-8">
+									<label for="nome">Nome</label> <input type="text" name="nome"
+										th:field="*{nome}" class="form-control" id="nome">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="descricao">Descrição</label> <input type="text"
+									name="descricao" th:field="*{descricao}" class="form-control"
+									id="descricao">
+							</div>
+
+							<input class="btn btn-outline-success" type="submit" value="Salvar">
+							<a class="btn btn-outline-secondary" href="/cadastroarea_con">Cancelar</a>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<br /> <br />
+
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<form action="pesquisararea_con" id="pesquisararea_con"
+							method="post">
+							<!-- post igual como foi mapeado -->
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="nomepesquisa">Pesquisar por nome:</label> <input
+										type="text" name="nomepesquisa" class="form-control"
+										id="nomepesquisa">
+								</div>
+							</div>
+							<div class="form-group">
+								<input class="btn btn-outline-dark" type="submit" value="Pesquisar">
+								<a class="btn btn-outline-dark" href="/listaareas_con"> Lista de
+									Areas de Conhecimento </a>
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nome</th>
+									<th>Descricao</th>
+									<th>Editar</th>
+									<th>Excluir</th>
+								</tr>
+							</thead>
+
+							<tr th:each="area_con : ${areas_con}">
+
+								<td th:text="${area_con.id}"></td>
+								<td th:text="${area_con.nome}"></td>
+								<td th:text="${area_con.descricao}"></td>
+								<td><a
+									th:href="@{/editararea_con/{idarea_con}(idarea_con=${area_con.id})}">
+										Editar </a></td>
+								<td><a
+									th:href="@{/removerarea_con/{idarea_con}(idarea_con=${area_con.id})}">
+										Excluir </a></td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div th:replace="fragments/sidebar :: sidebar-control"></div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+</body>
+</html>
