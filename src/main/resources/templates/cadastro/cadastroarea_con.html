@@ -123,5 +123,29 @@
 		<div th:replace="fragments/sidebar :: sidebar-control"></div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
+	
+	<script type="text/javascript">
+
+	function validarCampos(){
+
+		nome = document.getElementById('nome').value;
+		descricao = document.getElementById('descricao').value;
+
+		if(nome === ''){
+
+			alert('O Nome deve ser informado.');
+			return false;
+		}
+
+		else if(descricao === '') {
+
+			alert('A Descrição deve ser informada.');
+			return false;
+		}
+
+		return true;
+	}
+
+	</script>
 </body>
 </html>

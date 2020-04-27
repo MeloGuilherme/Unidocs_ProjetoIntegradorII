@@ -30,6 +30,120 @@
 			<div class="content">
 				<div class="container-fluid">
 
+					<div class="row">
+						<form action="salvarproposta" id="formprosposta" method="post"
+							th:object="${propostaobj}" class="col-md-12"
+							onsubmit="return validarCampos()? true : false">
+							<!-- post igual como foi mapeado -->
+
+							<div class="form-row">
+								<div class="form-group col-md-2">
+									<label for="id">ID: </label> <input name="id" th:field="*{id}"
+										id="id" type="text" readonly="readonly" class="form-control">
+								</div>
+								<div class="form-group col-md-10">
+									<label for="nome_aluno"> Nome do Aluno:</label> <input
+										name="nome_aluno" th:field="*{nome_aluno}" id="nome_aluno"
+										class="form-control" type="text">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="descricao"> Descrição: </label> <input
+									name="descricao" th:field="*{descricao}" id="descricao"
+									class="form-control" type="text">
+							</div>
+
+							<div class="form-group">
+								<label for="titulo"> Título: </label> <input name="titulo"
+									th:field="*{titulo}" id="titulo" class="form-control"
+									type="text">
+							</div>
+
+							<div class="form-group">
+								<label for="turma"> Turma: </label> <input type="text"
+									name="turma" th:field="*{turma}" id="turma"
+									class="form-control">
+							</div>
+
+							<div class="form-group">
+								<label for="status"> Status: </label> <input type="text"
+									name="status" th:field="*{status}" id="status"
+									class="form-control">
+							</div>
+
+							<div class="form-group">
+								<label for="professor"> Professor: </label> <input
+									name="professor" th:field="*{professor}" id="professor"
+									class="form-control" type="text">
+							</div>
+
+							<div class="form-group">
+								<label for="data_criacao"> Data Criação:</label> <input
+									type="date" name="data_criacao" th:field="*{data_criacao}"
+									id="data_criacao" class="form-control">
+							</div>
+
+							<input class="btn btn-primary" type="submit" value="Salvar">
+							<a class="btn btn-primary" href="/cadastro_proposta">Cancelar</a>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<br /> <br />
+
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<form action="pesquisarprop" method="post">
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="titulopesquisa"> Pesquisar por título: </label> <input
+										name="titulopesquisa" id="titulopesquisa" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<input class="btn btn-primary" type="submit" value="Pesquisar">
+								<a class="btn btn-primary" href="/listapropostas"> Lista de
+									Propostas </a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="container-fluid">
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Título</th>
+									<th>Descricao</th>
+									<th>Editar</th>
+									<th>Excluir</th>
+								</tr>
+							</thead>
+
+							<tr th:each="proposta : ${propostas}">
+
+								<td th:text="${proposta.id}"></td>
+								<td th:text="${proposta.titulo}"></td>
+								<td th:text="${proposta.descricao}"></td>
+								<td><a
+									th:href="@{/editarprop/{idprop}(idprop=${proposta.id})}">
+										Editar </a></td>
+								<td><a
+									th:href="@{/removerprop/{idprop}(idprop=${proposta.id})}">
+										Excluir </a></td>
+							</tr>
+						</table>
+					</div>
+
 				</div>
 			</div>
 
@@ -37,5 +151,30 @@
 		<div th:replace="fragments/sidebar :: sidebar-control"></div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
+	
+	<script type="text/javascript">
+
+	function validarCampos(){
+
+		titulo = document.getElementById('titulo').value;
+		descricao = document.getElementById('descricao').value;
+
+		if(titulo === ''){
+
+			alert('O título deve ser informado.');
+			return false;
+		}
+
+		else if(descricao === '') {
+
+			alert('A Descrição deve ser informada.');
+			return false;
+		}
+
+		return true;
+	}
+
+	</script>
+	
 </body>
 </html>
