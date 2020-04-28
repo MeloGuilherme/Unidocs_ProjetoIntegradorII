@@ -29,59 +29,63 @@
 
 			<div class="content">
 				<div class="container-fluid">
+					<div class="card">
+						<div class="card-body">
 
-					<div class="row">
-						<form action="salvararea_con" id="formarea_con" method="post"
-							th:object="${area_conobj}" class="col-md-12">
-							<!-- post igual como foi mapeado -->
-							<div class="form-row">
-								<div class="form-group col-md-4">
-									<label for="id">ID</label> <input type="text" name="id"
-										th:field="*{id}" class="form-control" id="id"
-										readonly="readonly">
-								</div>
-								<div class="form-group col-md-8">
-									<label for="nome">Nome</label> <input type="text" name="nome"
-										th:field="*{nome}" class="form-control" id="nome">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="descricao">Descrição</label> <input type="text"
-									name="descricao" th:field="*{descricao}" class="form-control"
-									id="descricao">
-							</div>
+							<div class="row">
+								<form action="salvararea_con" id="formarea_con" method="post"
+									th:object="${area_conobj}" class="col-md-12">
+									<!-- post igual como foi mapeado -->
+									<div class="form-row">
+										<div class="form-group col-md-4">
+											<label for="id">ID:</label> <input type="text" name="id"
+												th:field="*{id}" class="form-control" id="id"
+												readonly="readonly" placeholder="Id da Area de Conhecimento">
+										</div>
+										<div class="form-group col-md-8">
+											<label for="nome">Nome:</label> <input type="text"
+												name="nome" th:field="*{nome}" class="form-control"
+												id="nome" placeholder="Nome da Area de Conhecimento">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="descricao">Descrição:</label>
+										<textarea class="form-control" name="descricao"
+											th:field="*{descricao}" id="descricao"
+											placeholder="Descrição da Area de Conhecimento"></textarea>
+									</div>
 
-							<input class="btn btn-outline-success" type="submit" value="Salvar">
-							<a class="btn btn-outline-secondary" href="/cadastroarea_con">Cancelar</a>
-						</form>
+									<input class="btn btn-outline-success" type="submit"
+										value="Salvar"> <a class="btn btn-outline-secondary"
+										href="/cadastroarea_con">Cancelar</a>
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<br /> <br />
-
 			<div class="content">
 				<div class="container-fluid">
+					<div class="card">
+						<div class="card-body">
 
-					<div class="row">
-						<form action="pesquisararea_con" id="pesquisararea_con"
-							method="post">
-							<!-- post igual como foi mapeado -->
-							<div class="form-row">
-								<div class="form-group col-md-12">
-									<label for="nomepesquisa">Pesquisar por nome:</label> <input
-										type="text" name="nomepesquisa" class="form-control"
-										id="nomepesquisa">
-								</div>
+							<div class="row">
+								<form action="pesquisararea_con" id="pesquisararea_con"
+									method="post" class="col-md-12">
+									<!-- post igual como foi mapeado -->
+									<div class="form-group">
+										<label for="nomepesquisa">Pesquisar por nome:</label> <input
+											type="text" name="nomepesquisa" class="form-control"
+											id="nomepesquisa"
+											placeholder="Digite o nome da Area de Conhecimento">
+									</div>
+									<input class="btn btn-outline-dark" type="submit"
+										value="Pesquisar"> <a class="btn btn-outline-dark"
+										href="/listaareas_con"> Listar todas </a>
+								</form>
 							</div>
-							<div class="form-group">
-								<input class="btn btn-outline-dark" type="submit" value="Pesquisar">
-								<a class="btn btn-outline-dark" href="/listaareas_con"> Lista de
-									Areas de Conhecimento </a>
-							</div>
-
-
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -123,29 +127,27 @@
 		<div th:replace="fragments/sidebar :: sidebar-control"></div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
-	
+
 	<script type="text/javascript">
+		function validarCampos() {
 
-	function validarCampos(){
+			nome = document.getElementById('nome').value;
+			descricao = document.getElementById('descricao').value;
 
-		nome = document.getElementById('nome').value;
-		descricao = document.getElementById('descricao').value;
+			if (nome === '') {
 
-		if(nome === ''){
+				alert('O Nome deve ser informado.');
+				return false;
+			}
 
-			alert('O Nome deve ser informado.');
-			return false;
+			else if (descricao === '') {
+
+				alert('A Descrição deve ser informada.');
+				return false;
+			}
+
+			return true;
 		}
-
-		else if(descricao === '') {
-
-			alert('A Descrição deve ser informada.');
-			return false;
-		}
-
-		return true;
-	}
-
 	</script>
 </body>
 </html>

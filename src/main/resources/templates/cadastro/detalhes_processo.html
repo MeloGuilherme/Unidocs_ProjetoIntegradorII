@@ -1,237 +1,102 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
 <head>
-	<meta charset="UTF-8">
-	<title>Detalhes Processo</title>
+<title>Projeto Integrador II</title>
+<div th:replace="fragments/header :: header-css"></div>
+<div th:replace="fragments/header :: header-js"></div>
 
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-	<style type="text/css">
-		
-		::-webkit-input-placeholder {
-			color: black;
-		}
-
-	</style>
+<style type="text/css">
+::-webkit-input-placeholder {
+	color: black;
+}
+</style>
 
 </head>
-<body>
 
-	<div class="row">
-		<div class="col 12">
-			<h1>Tela de Detalhes do Processo</h1>
-			<a class="waves-effect waves-light btn blue lighten-2" href="/">Retornar ao Menu</a>
-			<a class="waves-effect waves-light btn" href="/cadastro_aluno">Cadastro de Aluno</a>
-			<a class="waves-effect waves-light btn" href="/cadastro_professor">Cadastro de Professor</a>
-			<a class="waves-effect waves-light btn" href="/cadastro_faq">Cadastro de FAQ</a>
-			<a class="waves-effect waves-light btn red lighten-2" href="/logout">Sair do Sistema</a>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<div th:replace="fragments/header :: header"></div>
+		<div th:replace="fragments/sidebar :: sidebar"></div>
+		<div class="content-wrapper">
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h2>UNIDOCS</h2>
+							<h6>Gerenciamento de Documentos - Unitins</h6>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+								<li class="breadcrumb-item active">Início</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="container-fluid">
+					<div class="card">
+						<div class="card-body">
+							<div class="form-group">
+								<form>
+									<div class="form-row">
+										<div class="form-group col-md-4">
+											<label for="aluno_proposta">Nome do Aluno:</label> <input
+												placeholder="Pedro Álvares Cabral" id="aluno_proposta"
+												type="text" class="form-control" readonly="readonly">
+										</div>
+										<div class="form-group col-md-4">
+											<label for="turma_proposta">Turma/Ano:</label> <input
+												placeholder="2020/1" id="turma_proposta" type="text"
+												class="form-control" readonly="readonly">
+										</div>
+										<div class="form-group col-md-4">
+											<label for="professor_proposta">Professor da
+												Proposta:</label> <input placeholder="Pero Vaz de Caminha"
+												id="professor_proposta" type="text" class="form-control"
+												readonly="readonly">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-4">
+											<label for="titulo_prop">Título do PCC/TCC:</label> <input
+												placeholder="Proposta do Pedro" id="titulo_prop" type="text"
+												class="form-control" readonly="readonly">
+										</div>
+										<div class="form-group col-md-4">
+											<label for="data_criacao">Data da Criação:</label> <input
+												placeholder="20/10/2020" id="data_criacao" type="text"
+												class="form-control" readonly="readonly">
+										</div>
+										<div class="form-group col-md-4">
+											<label for="status_proposta">Status da Proposta:</label> <input
+												placeholder="Documento assinado pelo orientador"
+												id="status_proposta" type="text" class="form-control"
+												readonly="readonly">
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-md-12">
+											<label for="titulo_proposta">Resumo da Proposta:</label>
+											<textarea class="form-control"
+												placeholder="Finge que aqui existe toda uma descrição resumindo qual é a proposta de TCC/PCC do Pedro."
+												id="titulo_proposta" readonly="readonly"></textarea>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		<div th:replace="fragments/sidebar :: sidebar-control"></div>
+		<div th:replace="fragments/footer :: footer"></div>
 	</div>
 
-	<br />
-
-	<div class="row">
-		<fieldset>
-			<legend> Dados da Proposta: </legend>
-			<br />
-			<form class="col s12">
-				<div class="row">
-					<div class="input-field col s4">
-						<input placeholder="Pedro Álvares Cabral" id="aluno_proposta" type="text" class="validate" readonly="readonly">
-						<label for="aluno_proposta">Nome do Aluno:</label>
-					</div>
-					<div class="input-field col s4">
-						<input placeholder="2020/1" id="turma_proposta" type="text" class="validate" readonly="readonly">
-						<label for="turma_proposta">Turma/Ano:</label>
-					</div>
-					<div class="input-field col s4">
-						<input placeholder="Pero Vaz de Caminha" id="professor_proposta" type="text" class="validate" readonly="readonly">
-						<label for="professor_proposta">Professor Proposta</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s4">
-						<input placeholder="Proposta do Pedro" id="titulo_proposta" type="text" class="validate" readonly="readonly">
-						<label for="titulo_proposta">Título do PCC/TCC</label>
-					</div>
-					<div class="input-field col s4">
-						<input placeholder="20/10/2020" id="data_criacao" type="text" class="validate" readonly="readonly">
-						<label for="data_criacao">Data da Criação:</label>
-					</div>
-					<div class="input-field col s4">
-						<input placeholder="Documento assinado pelo orientador" id="status_proposta" type="text" class="validate" readonly="readonly">
-						<label for="status_proposta">Status da Proposta</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input placeholder="Finge que aqui existe toda uma descrição resumindo qual é a proposta de TCC/PCC do Pedro." 
-						id="titulo_proposta" type="text" class="validate" readonly="readonly">
-						<label for="titulo_proposta">Resumo da Proposta</label>
-					</div>
-				</div>
-			</form>
-		</fieldset>
-	</div>
-
-	<br />
-
-	<div class="row">
-		<fieldset>
-			<br />
-			<form class="col s12">
-				<div class="row">
-					<div class="input-field col s6">
-						<center>
-							<span class="btn-large waves-effect waves-light red lighten-2"><i class="material-icons right">list</i> Lista de Assinaturas </span>
-						</center>
-					</div>
-					<div class="input-field col s6">
-						<center>
-							<a class="waves-effect waves-light btn-large"><i class="material-icons right">border_color</i>ASSINAR UM NOVO DOCUMENTO</a>
-						</center>
-					</div>
-				</div>
-				<div>
-					
-					<table class="highlight">
-						<thead>
-							<tr>
-								<th>Usuário da Assinatura</th>
-								<th>Título do Documento</th>
-								<th>Data da Assinatura</th>
-								<th>Detalhes Proposta</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<tr>
-								<td>Aluno 01</td>
-								<td>Título da proposta 01</td>
-								<td>20/01/2020</td>
-							</tr>
-							<tr>
-								<td>Aluno 02</td>
-								<td>Título da proposta 02</td>
-								<td>16/02/2020</td>
-							</tr>
-							<tr>
-								<td>Aluno 03</td>
-								<td>Título da proposta 03</td>
-								<td>28/03/2020</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</form>
-		</fieldset>
-	</div>
-
-	<div class="row">
-		<fieldset>
-			<br />
-			<form class="col s12">
-				<div class="row">
-					<div class="input-field col s6">
-						<center>
-							<span class="btn-large waves-effect waves-light red lighten-2"><i class="material-icons right">list</i> Lista de Arquivos Anexados </span>
-						</center>
-					</div>
-					<div class="input-field col s6">
-						<center>
-							<a class="waves-effect waves-light btn-large"><i class="material-icons right">cloud_upload</i>ANEXAR UM NOVO DOCUMENTO</a>
-						</center>
-					</div>
-				</div>
-				<div>
-					
-					<table class="highlight">
-						<thead>
-							<tr>
-								<th>Usuário que anexou</th>
-								<th>Nome do Documento</th>
-								<th>Baixar arquivo</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<tr>
-								<td>Aluno 01</td>
-								<td>Título da proposta 01</td>
-								<td><a class="waves-effect waves-light btn blue lighten-2"><i class="material-icons right">cloud_download</i> Download</a></td>
-							</tr>
-							<tr>
-								<td>Aluno 02</td>
-								<td>Título da proposta 02</td>
-								<td><a class="waves-effect waves-light btn blue lighten-2"><i class="material-icons right">cloud_download</i> Download</a></td>
-							</tr>
-							<tr>
-								<td>Aluno 03</td>
-								<td>Título da proposta 03</td>
-								<td><a class="waves-effect waves-light btn blue lighten-2"><i class="material-icons right">cloud_download</i> Download</a></td>
-							</tr>
-						</tbody>
-					</table>
-
-
-				</div>
-			</form>
-		</fieldset>
-	</div>
-
-	<div class="row">
-		<fieldset>
-			<br />
-			<form class="col s12">
-				<div class="row">
-					<center>
-						<h6 class="btn-large waves-effect waves-light orange lighten-2"><i class="material-icons right">list</i> Lista de Histórico de Status </h6>
-					</center>
-					<br />
-				</div>
-				<div>
-					
-					<table class="highlight">
-						<thead>
-							<tr>
-								<th>Usuário</th>
-								<th>Status</th>
-								<th>Data</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<tr>
-								<td>Aluno 01</td>
-								<td>Abertura do processo de PCC</td>
-								<td>20/01/2020</td>
-							</tr>
-							<tr>
-								<td>Aluno 01</td>
-								<td>Aguardando assinatura do orientador</td>
-								<td>16/02/2020</td>
-							</tr>
-							<tr>
-								<td>Professor 01</td>
-								<td>Documento assinado pelo orientador</td>
-								<td>28/03/2020</td>
-							</tr>
-						</tbody>
-					</table>
-
-				</div>
-			</form>
-		</fieldset>
-	</div>
-	
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+	<script src="https://use.fontawesome.com/ff8b5d31be.js"></script>
 </body>
 </html>
