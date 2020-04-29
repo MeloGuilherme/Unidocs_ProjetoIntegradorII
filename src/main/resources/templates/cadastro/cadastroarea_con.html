@@ -4,6 +4,7 @@
 <title>Projeto Integrador II</title>
 <div th:replace="fragments/header :: header-css"></div>
 <div th:replace="fragments/header :: header-js"></div>
+
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
@@ -38,18 +39,18 @@
 									<!-- post igual como foi mapeado -->
 									<div class="form-row">
 										<div class="form-group col-md-4">
-											<label for="id">ID:</label> <input type="text" name="id"
+											<label for="id"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;ID:</label> <input type="text" name="id"
 												th:field="*{id}" class="form-control" id="id"
 												readonly="readonly" placeholder="Id da Area de Conhecimento">
 										</div>
 										<div class="form-group col-md-8">
-											<label for="nome">Nome:</label> <input type="text"
+											<label for="nome"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Nome:</label> <input type="text"
 												name="nome" th:field="*{nome}" class="form-control"
 												id="nome" placeholder="Nome da Area de Conhecimento">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="descricao">Descrição:</label>
+										<label for="descricao"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp;&nbsp;Descrição:</label>
 										<textarea class="form-control" name="descricao"
 											th:field="*{descricao}" id="descricao"
 											placeholder="Descrição da Area de Conhecimento"></textarea>
@@ -75,7 +76,7 @@
 									method="post" class="col-md-12">
 									<!-- post igual como foi mapeado -->
 									<div class="form-group">
-										<label for="nomepesquisa">Pesquisar por nome:</label> <input
+										<label for="nomepesquisa"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp; Pesquisar por nome:</label> <input
 											type="text" name="nomepesquisa" class="form-control"
 											id="nomepesquisa"
 											placeholder="Digite o nome da Area de Conhecimento">
@@ -94,7 +95,7 @@
 				<div class="container-fluid">
 
 					<div class="table-responsive">
-						<table class="table table-striped">
+						<table class="table table-hover">
 							<thead>
 								<tr>
 									<th>ID</th>
