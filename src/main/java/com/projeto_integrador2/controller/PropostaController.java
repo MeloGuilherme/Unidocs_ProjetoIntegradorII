@@ -91,4 +91,15 @@ public class PropostaController {
 		
 		return modelAndView;
 	}
+	
+	@GetMapping("/detalhes_processo/{idproposta}")
+	public ModelAndView detalhes(@PathVariable("idproposta") Long idproposta) {
+
+		Optional<Proposta> proposta = propostaRepository.findById(idproposta);
+
+		ModelAndView modelAndView = new ModelAndView("cadastro/detalhes_processo");
+		modelAndView.addObject("propostaobj", proposta.get());
+
+		return modelAndView;
+	}
 }
